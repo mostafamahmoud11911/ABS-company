@@ -13,7 +13,7 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 
 export default function ServicesEditDialog({ service }: { service: ServiceItem }) {
     const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
-    const form = useForm({ resolver: zodResolver(EditServiceSchema), defaultValues: { title: service?.title, description: service?.description, image: undefined, status: service?.status } });
+    const form = useForm({ resolver: zodResolver(EditServiceSchema), defaultValues: { title: service?.title, description: service?.description, summary: service?.summary, image: undefined, status: service?.status } });
 
 
     const mutation = useEditServices();
@@ -26,6 +26,7 @@ export default function ServicesEditDialog({ service }: { service: ServiceItem }
 
         formData.append("title", data.title ?? "");
         formData.append("description", data.description ?? "");
+        formData.append("summary", data.summary ?? "");
 
         if (data?.image?.[0]) {
             formData.append("image", data.image[0]);
@@ -73,6 +74,20 @@ export default function ServicesEditDialog({ service }: { service: ServiceItem }
                                     <FormLabel>Description</FormLabel>
                                     <FormControl>
                                         <Input type='text' placeholder="Description" {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+
+                        <FormField
+                            control={form.control}
+                            name="summary"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Summary</FormLabel>
+                                    <FormControl>
+                                        <Input type='text' placeholder="Summary" {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>

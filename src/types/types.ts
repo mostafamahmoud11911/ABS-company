@@ -82,6 +82,7 @@ export type ServiceItem = {
   _id: string;
   title: string;
   description: string;
+  summary: string;
   image: string;
   slug: string;
   status: boolean;

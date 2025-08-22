@@ -13,7 +13,7 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 
 export default function ServicesAddDialog() {
     const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
-    const form = useForm({ resolver: zodResolver(addServiceSchema), defaultValues: { title: "", description: "", image: undefined, status: undefined } });
+    const form = useForm({ resolver: zodResolver(addServiceSchema), defaultValues: { title: "", description: "", summary: "", image: undefined, status: undefined } });
 
 
     const mutation = useAddServices();
@@ -25,6 +25,7 @@ export default function ServicesAddDialog() {
         const formData = new FormData();
         formData.append("title", data.title);
         formData.append("description", data.description);
+        formData.append("summary", data.summary);
         if (data.image?.[0]) {
             formData.append("image", data.image[0]);
         }
@@ -68,6 +69,20 @@ export default function ServicesAddDialog() {
                                     <FormLabel>Description</FormLabel>
                                     <FormControl>
                                         <Textarea placeholder="Description" {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+
+                        <FormField
+                            control={form.control}
+                            name="summary"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Summary</FormLabel>
+                                    <FormControl>
+                                        <Textarea placeholder="Summary" {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>

@@ -12,6 +12,7 @@ export type LoginSchemaType = zod.infer<typeof LoginSchema>
 export const addServiceSchema = zod.object({
     title: zod.string().min(3).max(1000),
     description: zod.string().min(30).max(10000),
+    summary: zod.string().min(30).max(10000),
     image: zod.any().refine((files) => files?.length > 0, "Image is required"),
     status: zod.boolean(),
 })
@@ -22,6 +23,7 @@ export type AddServiceSchemaType = zod.infer<typeof addServiceSchema>
 export const EditServiceSchema = zod.object({
     title: zod.string().min(3).max(1000).optional(),
     description: zod.string().min(30).max(10000).optional(),
+    summary: zod.string().min(30).max(10000).optional(),
     image: zod.any().optional(),
     status: zod.boolean().optional(),
 })
