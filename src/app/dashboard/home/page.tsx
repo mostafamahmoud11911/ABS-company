@@ -103,19 +103,22 @@ export default function Dashboard() {
                         {data?.data && data?.data.services.lastFiveServices.length > 0 ? (
                             data?.data.services.lastFiveServices.map(service => (
                                 <div key={service._id} className="flex justify-between items-center">
-                                    <div className="relative w-[45px] h-[45px]">
-                                        <Image
-                                            src={service?.image || ""}
-                                            fill
-                                            sizes="(max-width: 768px) 50px, (max-width: 1200px) 50px, 50px"
-                                            className="rounded object-cover"
-                                            alt="service-img"
-                                        />
+                                    <div className="flex gap-3 items-center">
+                                        <div className="relative w-[45px] h-[45px]">
+                                            <Image
+                                                src={service?.image || ""}
+                                                fill
+                                                sizes="(max-width: 768px) 50px, (max-width: 1200px) 50px, 50px"
+                                                className="rounded object-cover"
+                                                alt="service-img"
+                                            />
+                                        </div>
+                                        <div>
+                                            <p className="text-sm">{service.title}</p>
+                                            <p className={cn("text-sm", service.status ? "text-green-500" : "text-red-500")}>{service.status ? "Active" : "Inactive"}</p>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <p className="text-sm">{service.title}</p>
-                                        <p className={cn("text-sm", service.status ? "text-green-500" : "text-red-500")}>{service.status ? "Active" : "Inactive"}</p>
-                                    </div>
+
                                     <p className="text-xs">{new Date(service.createdAt).toLocaleDateString("en-US")}</p>
                                 </div>
                             ))

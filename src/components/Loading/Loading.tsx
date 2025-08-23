@@ -34,7 +34,7 @@ export default function Loading() {
                         <div className="h-4 w-32 bg-gray-300 rounded"></div>
                         <div className="flex gap-3">
                             {[1, 2, 3, 4, 5].map((j) => (
-                                <div key={j} className="w-12 h-12 bg-gray-300 rounded-full"></div>
+                                <div key={j} className="w-12 h-12 bg-gray-300 rounded"></div>
                             ))}
                         </div>
                     </div>
