@@ -87,7 +87,7 @@ export default function Dashboard() {
                             data?.data.clients.lastFiveClients.map(item => (
                                 <div key={item._id}>
                                     <div className="w-[45px] h-[45px] relative">
-                                        <Image src={item.image} fill sizes="(max-width: 768px) 50px, (max-width: 1200px) 50px, 50px" className="object-cover rounded-full" alt="client-img" />
+                                        <Image src={item.image} fill sizes="(max-width: 768px) 50px, (max-width: 1200px) 50px, 50px" className="object-cover rounded" alt="client-img" />
 
                                     </div>
                                     <p className="text-sm mt-1">{item.company}</p>
@@ -108,7 +108,7 @@ export default function Dashboard() {
                                             src={service?.image || ""}
                                             fill
                                             sizes="(max-width: 768px) 50px, (max-width: 1200px) 50px, 50px"
-                                            className="rounded-full object-cover"
+                                            className="rounded object-cover"
                                             alt="service-img"
                                         />
                                     </div>
