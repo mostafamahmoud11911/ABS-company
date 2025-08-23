@@ -33,7 +33,6 @@ export default function ClientsEditDialog({ client }: { client: ClientItem }) {
             mutation.mutate({ data: formData, id: client._id });
         }
 
-        setIsDialogOpen(false);
     }
 
     return (

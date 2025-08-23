@@ -42,7 +42,6 @@ export default function ServicesEditDialog({ service }: { service: ServiceItem }
             mutation.mutate({ data: formData, id: service._id });
         }
 
-        setIsDialogOpen(false);
     }
 
     return (

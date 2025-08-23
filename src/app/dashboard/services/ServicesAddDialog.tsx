@@ -35,7 +35,6 @@ export default function ServicesAddDialog() {
         formData.append("status", data.status.toString());
 
         mutation.mutate({ data: formData });
-        setIsDialogOpen(false);
     }
 
 

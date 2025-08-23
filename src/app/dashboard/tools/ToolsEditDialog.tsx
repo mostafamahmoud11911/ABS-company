@@ -37,7 +37,6 @@ export default function ToolsEditDialog({ tool }: { tool: Tools }) {
             mutation.mutate({ data: formData, id: tool._id });
         }
 
-        setIsDialogOpen(false);
     }
     return (
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>

@@ -16,7 +16,7 @@ export const useAddServices = (onSuccessCallback: () => void) => {
       toast.success("Service added successfully");
       queryClient.invalidateQueries({ queryKey: ["services"] });
       queryClient.invalidateQueries({ queryKey: ["dashboard"] });
-      if(onSuccessCallback) onSuccessCallback();
+      if (onSuccessCallback) onSuccessCallback();
     },
     onError: (err) => {
       toast.error(err.response?.data.message || "Something went wrong");

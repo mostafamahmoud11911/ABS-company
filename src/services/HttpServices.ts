@@ -34,7 +34,6 @@ class HttpServices {
   }
 
   post = async <TResponse, TBody = unknown>(body: TBody) => {
-    console.log(body);
     const { data } = await apiCall.post<TResponse>(this.endPoint, body);
     return data;
   };

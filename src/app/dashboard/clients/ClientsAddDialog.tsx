@@ -28,7 +28,6 @@ export default function ClientsAddDialog() {
     }
 
     mutation.mutate({ data: formData });
-    setIsDialogOpen(false);
   }
   return (
     <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>

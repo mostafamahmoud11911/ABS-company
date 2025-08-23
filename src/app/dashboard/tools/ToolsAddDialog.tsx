@@ -32,7 +32,6 @@ export default function ToolsAddDialog() {
 
     mutation.mutate({ data: formData });
     
-    setIsDialogOpen(false);
   }
   return (
     <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
