@@ -26,6 +26,13 @@ class HttpServices {
     return data;
   };
 
+  getBySlug = async <TResponse>(slug: string) => {
+    const { data } = await apiCall.get<TResponse>(
+      `${this.endPoint}/${slug}`
+    );
+    return data;
+  }
+
   post = async <TResponse, TBody = unknown>(body: TBody) => {
     console.log(body);
     const { data } = await apiCall.post<TResponse>(this.endPoint, body);

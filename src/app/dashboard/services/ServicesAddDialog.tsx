@@ -16,7 +16,10 @@ export default function ServicesAddDialog() {
     const form = useForm({ resolver: zodResolver(addServiceSchema), defaultValues: { title: "", description: "", summary: "", image: undefined, status: undefined } });
 
 
-    const mutation = useAddServices();
+    const mutation = useAddServices(()=> {
+        setIsDialogOpen(false);
+        form.reset();
+    });
 
 
 

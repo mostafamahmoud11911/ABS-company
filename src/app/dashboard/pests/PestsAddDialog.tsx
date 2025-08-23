@@ -11,10 +11,13 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 
 export default function PestsAddDialog() {
     const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
-    const form = useForm({ resolver: zodResolver(addPestSchema), defaultValues: { name: "", description: "", image: undefined} });
+    const form = useForm({ resolver: zodResolver(addPestSchema), defaultValues: { name: "", description: "", image: undefined } });
 
 
-    const mutation = useAddPest()
+    const mutation = useAddPest(() => {
+        setIsDialogOpen(false);
+        form.reset();
+    })
 
 
     const onSubmit: SubmitHandler<AddPestSchemaType> = (data) => {
@@ -29,7 +32,6 @@ export default function PestsAddDialog() {
 
 
         mutation.mutate({ data: formData });
-        setIsDialogOpen(false);
     }
 
     return (
@@ -82,7 +84,6 @@ export default function PestsAddDialog() {
                                         <Input
                                             type="file"
                                             accept="image/*"
-                                            // pass both onChange and ref so RHF can track the input
                                             onChange={(e) => field.onChange(e.target.files)}
                                             ref={field.ref}
                                         />

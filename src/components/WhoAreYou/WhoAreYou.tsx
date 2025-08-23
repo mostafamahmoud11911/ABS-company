@@ -2,6 +2,7 @@ import Image from 'next/image'
 import img from "../../../public/1.jpeg"
 import img2 from "../../../public/3.png"
 import React from 'react'
+import Link from 'next/link'
 
 export default function WhoAreYou() {
     return (
@@ -27,11 +28,11 @@ export default function WhoAreYou() {
 
 
                         <div className="mt-8 flex items-center gap-4">
-                            <a href="#" className="inline-flex items-center justify-center rounded-xl bg-orange-600 px-6 py-3 font-semibold text-white shadow-lg shadow-emerald-600/20 transition hover:translate-y-0.5 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2">Discover more</a>
-                            <a href="#contact" className="inline-flex items-center gap-2 font-medium text-slate-700 transition hover:text-orange-700">
+                            <Link href="/about" className="inline-flex items-center justify-center rounded-xl bg-orange-600 px-6 py-3 font-semibold text-white shadow-lg shadow-emerald-600/20 transition hover:translate-y-0.5 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2">Discover more</Link>
+                            <Link href="/contact" className="inline-flex items-center gap-2 font-medium text-slate-700 transition hover:text-orange-700">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5"><path d="M12 4.5a7.5 7.5 0 1 0 7.5 7.5A7.508 7.508 0 0 0 12 4.5Zm0 13.5A6 6 0 1 1 18 12a6.007 6.007 0 0 1-6 6Zm.75-9.75h-1.5v4.5h4.5v-1.5h-3V8.25Z" /></svg>
                                 Book a visit
-                            </a>
+                            </Link>
                         </div>
                     </div>
 

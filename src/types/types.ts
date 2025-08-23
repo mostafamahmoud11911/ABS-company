@@ -90,6 +90,10 @@ export type ServiceItem = {
   updatedAt: string;
 };
 
+export type Services = {
+  service: ServiceItem;
+};
+
 export type ServicesResponse = {
   services: ServiceItem[];
 };

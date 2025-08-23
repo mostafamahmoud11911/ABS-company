@@ -85,3 +85,14 @@ export const BlockedContactSchema = zod.object({
 });
 
 export type BlockedContactSchemaType = zod.infer<typeof BlockedContactSchema>
+
+
+export const contactSchema = zod.object({
+    email: zod.email(),
+    message: zod.string().min(3).max(1000),
+    phone: zod.string().min(8).max(14),
+    city: zod.string().min(3).max(100),
+    blocked: zod.boolean()
+});
+
+export type ContactSchemaType = zod.infer<typeof contactSchema>;

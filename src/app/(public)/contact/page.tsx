@@ -1,7 +1,48 @@
+"use client"
+import { Button } from '@/components/ui/button'
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
+import { Input } from '@/components/ui/input'
+import { Textarea } from '@/components/ui/textarea'
+import { useAddContact } from '@/hooks/useAddContact'
+import { useContacts } from '@/hooks/useContact'
+import { Contacts } from '@/types/types'
+import { contactSchema, ContactSchemaType } from '@/validation/validation'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { Mail, MapPin, Phone } from 'lucide-react'
 import React from 'react'
+import { SubmitHandler, useForm } from 'react-hook-form'
+import toast from 'react-hot-toast'
 
 export default function Contact() {
+  const form = useForm({
+    resolver: zodResolver(contactSchema),
+    defaultValues: {
+      message: "",
+      email: "",
+      phone: "",
+      city: "",
+      blocked: false
+    }
+  });
+
+  const mutation = useAddContact();
+  const { data: contacts } = useContacts();
+
+
+
+  function handleSendMessage(data: ContactSchemaType) {
+    const isBlocked = contacts?.contacts.some((contact: Contacts) => contact.blocked === true);
+
+    if (isBlocked) {
+      return toast.error("You are blocked by the admin");
+    }
+
+    mutation.mutate(data);
+  }
+
+  const onSubmit: SubmitHandler<ContactSchemaType> = (data) => {
+    handleSendMessage(data);
+  }
   return (
     <section className="bg-gray-50 py-16">
       <div className="max-w-6xl mx-auto h-full px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
@@ -39,44 +80,66 @@ export default function Contact() {
             Fill out the form and our team will get back to you shortly.
           </p>
 
-          <form className="space-y-5">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Name</label>
-              <input
-                type="text"
-                name="name"
-                required
-                className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-orange-500 focus:outline-none"
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
-              <input
-                type="email"
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+              <FormField
+                control={form.control}
                 name="email"
-                required
-                className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-orange-500 focus:outline-none"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Email</FormLabel>
+                    <FormControl>
+                      <Input placeholder="email" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
               />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Message</label>
-              <textarea
+              <FormField
+                control={form.control}
                 name="message"
-                rows={5}
-                required
-                className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-orange-500 focus:outline-none"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Message</FormLabel>
+                    <FormControl>
+                      <Textarea placeholder="message" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
               />
-            </div>
+              <FormField
+                control={form.control}
+                name="phone"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Phone</FormLabel>
+                    <FormControl>
+                      <Input placeholder="phone" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="city"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>City</FormLabel>
+                    <FormControl>
+                      <Input placeholder="city" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
 
-            <button
-              type="submit"
-              className="w-full bg-orange-600 text-white font-semibold py-3 rounded-lg shadow hover:bg-orange-700 transition"
-            >
-              Send Message
-            </button>
-          </form>
+              <Button type="submit" className="!bg-orange-600 !hover:bg-orange-600 text-white py-2 px-4 rounded-lg">
+                Send
+              </Button>
+            </form>
+          </Form>
         </div>
 
 

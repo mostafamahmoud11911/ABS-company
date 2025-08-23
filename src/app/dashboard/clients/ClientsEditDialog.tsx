@@ -15,7 +15,10 @@ export default function ClientsEditDialog({ client }: { client: ClientItem }) {
     const form = useForm({ resolver: zodResolver(EditClientSchema), defaultValues: { image: undefined } });
 
 
-    const mutation = useEditClient();
+    const mutation = useEditClient(() => {
+        setIsDialogOpen(false);
+        form.reset();
+    });
 
 
     const onSubmit: SubmitHandler<EditClientSchemaType> = async (data) => {

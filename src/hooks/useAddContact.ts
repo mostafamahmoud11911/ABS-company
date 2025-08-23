@@ -1,22 +1,27 @@
-import { pestServices } from "@/services/pestServices";
-import { Pests } from "@/types/types";
+import { contactServices } from "@/services/contactServices";
+import { Contacts } from "@/types/types";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 import toast from "react-hot-toast";
 
-export const useEditPest = (onSuccessCallback: () => void) => {
+export const useAddContact = () => {
   const queryClient = useQueryClient();
   return useMutation<
-    Pests,
+    Contacts,
     AxiosError<{ message: string }>,
-    { data: FormData; id: string }
+    {
+      message: string;
+      city: string;
+      email: string;
+      phone: string;
+      blocked: boolean;
+    }
   >({
-    mutationFn: ({ data, id }) => pestServices.put(data, id),
+    mutationFn: (data) => contactServices.post(data),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["pests"] });
+      toast.success("sent successfully");
+      queryClient.invalidateQueries({ queryKey: ["contact"] });
       queryClient.invalidateQueries({ queryKey: ["dashboard"] });
-      toast.success("Pest edited successfully");
-      if (onSuccessCallback) onSuccessCallback();
     },
     onError: (err) => {
       toast.error(err.response?.data.message || "Something went wrong");

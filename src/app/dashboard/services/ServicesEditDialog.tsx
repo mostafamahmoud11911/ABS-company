@@ -3,6 +3,7 @@ import { Dialog, DialogContent, DialogTitle, DialogTrigger } from '@/components/
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import { Textarea } from '@/components/ui/textarea'
 import { useEditServices } from '@/hooks/useEditServices'
 import { ServiceItem } from '@/types/types'
 import { EditServiceSchema, EditServiceSchemaType } from '@/validation/validation'
@@ -16,7 +17,10 @@ export default function ServicesEditDialog({ service }: { service: ServiceItem }
     const form = useForm({ resolver: zodResolver(EditServiceSchema), defaultValues: { title: service?.title, description: service?.description, summary: service?.summary, image: undefined, status: service?.status } });
 
 
-    const mutation = useEditServices();
+    const mutation = useEditServices(()=> {
+        setIsDialogOpen(false);
+        form.reset();
+    });
 
 
 
@@ -73,7 +77,7 @@ export default function ServicesEditDialog({ service }: { service: ServiceItem }
                                 <FormItem>
                                     <FormLabel>Description</FormLabel>
                                     <FormControl>
-                                        <Input type='text' placeholder="Description" {...field} />
+                                        <Textarea placeholder="Description" {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -87,7 +91,7 @@ export default function ServicesEditDialog({ service }: { service: ServiceItem }
                                 <FormItem>
                                     <FormLabel>Summary</FormLabel>
                                     <FormControl>
-                                        <Input type='text' placeholder="Summary" {...field} />
+                                        <Textarea placeholder="Summary" {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>

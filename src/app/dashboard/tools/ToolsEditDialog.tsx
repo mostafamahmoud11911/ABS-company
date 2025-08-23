@@ -16,7 +16,10 @@ export default function ToolsEditDialog({ tool }: { tool: Tools }) {
     const form = useForm({ resolver: zodResolver(EditToolSchema), defaultValues: { name: tool?.name, image: undefined } });
 
 
-    const mutation = useEditTool();
+    const mutation = useEditTool(()=> {
+        setIsDialogOpen(false);
+        form.reset();
+    });
 
 
     const onSubmit: SubmitHandler<EditToolSchemaType> = async (data) => {

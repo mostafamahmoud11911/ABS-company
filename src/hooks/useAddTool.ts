@@ -4,7 +4,8 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 import toast from "react-hot-toast";
 
-export const useAddTool = () => {
+
+export const useAddTool = (onSuccessCallback: () => void) => {
   const queryClient = useQueryClient();
   return useMutation<
     Tools,
@@ -16,6 +17,7 @@ export const useAddTool = () => {
       toast.success("Tool added successfully");
       queryClient.invalidateQueries({ queryKey: ["tools"] });
       queryClient.invalidateQueries({ queryKey: ["dashboard"] });
+      if (onSuccessCallback) onSuccessCallback();
     },
     onError: (err) => {
       toast.error(err.response?.data.message || "Something went wrong");

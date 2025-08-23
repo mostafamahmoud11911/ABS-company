@@ -15,7 +15,10 @@ export default function PestsEditDialog({ pest }: { pest: Pests }) {
     const form = useForm({ resolver: zodResolver(EditPestSchema), defaultValues: { name: pest?.name, description: pest?.description, image: undefined } });
 
 
-    const mutation = useEditPest();
+    const mutation = useEditPest(()=> {
+        setIsDialogOpen(false);
+        form.reset();
+    });
 
 
 
@@ -29,7 +32,6 @@ export default function PestsEditDialog({ pest }: { pest: Pests }) {
 
 
         mutation.mutate({ data: formData, id: pest._id });
-        setIsDialogOpen(false);
     }
 
 

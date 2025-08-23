@@ -14,7 +14,10 @@ export default function ToolsAddDialog() {
   const form = useForm({ resolver: zodResolver(addToolSchema), defaultValues: { name: "", image: undefined } });
 
 
-  const mutation = useAddTool();
+  const mutation = useAddTool(()=> {
+    setIsDialogOpen(false);
+    form.reset();
+  });
 
 
 

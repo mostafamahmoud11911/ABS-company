@@ -14,7 +14,10 @@ export default function ClientsAddDialog() {
   const form = useForm({ resolver: zodResolver(addClientSchema), defaultValues: { image: undefined } });
 
 
-  const mutation = useAddClient();
+  const mutation = useAddClient(() => {
+    setIsDialogOpen(false);
+    form.reset();
+  });
 
 
 
