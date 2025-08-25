@@ -4,12 +4,44 @@ import Image from 'next/image'
 import { useParams } from 'next/navigation'
 import noImage from '../../../../../public/noImage.jpg'
 import React from 'react'
+import { Loader2 } from 'lucide-react'
 
 export default function ServiceDetails() {
 
   const slug = useParams();
 
-  const { data } = useGetService(slug.serviceDetails as string)
+  const { data, isLoading, isError } = useGetService(slug.serviceDetails as string)
+
+  if (isLoading) {
+    return (
+      <section className="relative overflow-hidden py-24">
+        <div className="relative container mx-auto grid md:grid-cols-2 gap-12 items-center px-6">
+
+          <div className="space-y-6 animate-pulse">
+            <div className="h-10 w-2/3 bg-gray-300 rounded"></div>
+            <div className="h-4 w-3/4 bg-gray-200 rounded"></div>
+            <div className="h-4 w-1/2 bg-gray-200 rounded"></div>
+          </div>
+
+
+          <div className="relative flex items-center justify-center">
+            <div className="w-[600px] h-[400px] bg-gray-200 rounded-2xl animate-pulse"></div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (isError) {
+    return (
+      <section className="py-24 text-center">
+        <Loader2 className="mx-auto h-10 w-10 text-orange-500 animate-spin" />
+        <p className="mt-4 text-red-600 font-medium">
+          Failed to load service data. Please try again.
+        </p>
+      </section>
+    );
+  }
 
 
 
