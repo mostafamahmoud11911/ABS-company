@@ -1,7 +1,7 @@
 "use client"
 import { logout } from '@/action';
 import { Dashboard } from '@/constant/constants';
-import { BugOff, Contact, Home, IdCard, Layers, LogOut, Menu, SprayCan, X } from 'lucide-react'
+import { Contact, Home, IdCard, Layers, LogOut, Menu, X } from 'lucide-react'
 import Link from 'next/link'
 import React, { useState } from 'react'
 
@@ -13,8 +13,6 @@ export default function Sidebar() {
     { name: "Dashboard", icon: <Home size={20} />, href: Dashboard.DASHBOARD },
     { name: "Services", icon: <Layers size={20} />, href: Dashboard.SERVICES },
     { name: "Clients", icon: <IdCard size={20} />, href: Dashboard.CLIENT },
-    { name: "Tools", icon: <SprayCan size={20} />, href: Dashboard.TOOLS },
-    { name: "Pests", icon: <BugOff size={20} />, href: Dashboard.PESTS },
     { name: "Contacts", icon: <Contact size={20} />, href: Dashboard.CONTACTS },
   ];
   return (
