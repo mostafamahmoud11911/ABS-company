@@ -13,8 +13,8 @@ export default function Clients() {
 
     return (
         <section className="py-16 bg-gray-50">
-            <div className="max-w-6xl mx-auto px-4">
-                <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-10">
+            <div className="max-w-6xl mx-auto px-4 ">
+                <h2 className="mt-2 text-center text-xl text-black max-w-2xl mb-16 mx-auto">
                     We take pride in delivering outstanding customer service and building lasting partnerships with our clients
                 </h2>
 

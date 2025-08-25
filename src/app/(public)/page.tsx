@@ -1,12 +1,9 @@
-import About from '@/components/About/About'
 import Clients from '@/components/Clients/Clients'
-import CTA from '@/components/CTA/CTA'
 import EcoSafe from '@/components/EcoSafe/EcoSafe'
-import Pests from '@/components/Pests/Pests'
 import Services from '@/components/Services/Services'
-import Tools from '@/components/Tools/Tools'
-import WhoAreYou from '@/components/WhoAreYou/WhoAreYou'
 import React from 'react'
+import Header from '@/components/Header/Header'
+import Contact from '@/components/Contact/Contact'
 
 
 export default function Home() {
@@ -18,14 +15,11 @@ export default function Home() {
 
   return (
     <div>
-      <About />
-      <CTA />
-      <WhoAreYou />
+      <Header />
       <Services />
-      <EcoSafe />
-      <Tools />
-      <Pests />
       <Clients />
+      <EcoSafe />
+      <Contact />
     </div>
   )
 }

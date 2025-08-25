@@ -51,7 +51,7 @@ export default function ServicesEditDialog({ service }: { service: ServiceItem }
                     <Edit size={20} className='cursor-pointer' />
                 </Button>
             </DialogTrigger>
-            <DialogContent>
+            <DialogContent className="max-h-[80vh] overflow-y-auto">
                 <DialogTitle>Edit Service</DialogTitle>
 
                 <Form {...form}>

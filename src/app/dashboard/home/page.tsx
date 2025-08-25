@@ -61,24 +61,6 @@ export default function Dashboard() {
             </div>
 
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-3">
-                <div className="flex shadow-sm justify-between rounded p-6">
-                    <div className="space-y-3">
-                        <h5 className="text-2xl">{data?.data.tools.name}</h5>
-                        <p className="font-bold text-4xl">{data?.data.tools.total}</p>
-                    </div>
-                    <Hammer color="#5B81E7" size={25} />
-                </div>
-                <div className="flex shadow-sm justify-between rounded p-6">
-                    <div>
-                        <h5 className="text-2xl">{data?.data.pests.name}</h5>
-                        <p className="font-bold text-4xl">{data?.data.pests.total}</p>
-                    </div>
-                    <BugOff color="#F9A731" size={25} />
-                </div>
-            </div>
-
-
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-3 overflow-auto">
                 <div className="shadow-sm rounded p-3">
                     <h3 className="mb-3">Last 5 Clients</h3>

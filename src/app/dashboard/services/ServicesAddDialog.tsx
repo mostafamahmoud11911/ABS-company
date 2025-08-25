@@ -45,7 +45,7 @@ export default function ServicesAddDialog() {
                     Add Service
                 </Button>
             </DialogTrigger>
-            <DialogContent>
+            <DialogContent className="max-h-[80vh] overflow-y-auto">
                 <DialogTitle>Create Service</DialogTitle>
 
                 <Form {...form}>

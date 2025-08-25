@@ -7,7 +7,6 @@ export default function Footer() {
         <footer className="bg-gray-900 text-gray-300 pt-12 pb-6">
             <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-10">
 
-                {/* Logo + About */}
                 <div>
                     <Image src="/logo.png" alt="ABS Tech" width={140} height={60} />
                     <p className="mt-4 text-sm leading-relaxed text-gray-400">
@@ -16,7 +15,6 @@ export default function Footer() {
                     </p>
                 </div>
 
-                {/* Contact Info */}
                 <div>
                     <h3 className="text-lg font-semibold text-white mb-4">Contact Us</h3>
                     <ul className="space-y-3 text-sm">
@@ -42,7 +40,6 @@ export default function Footer() {
                     </ul>
                 </div>
 
-                {/* License */}
                 <div>
                     <h3 className="text-lg font-semibold text-white mb-4">About Us</h3>
                     <p className="text-sm text-gray-400">
@@ -53,7 +50,6 @@ export default function Footer() {
                 </div>
             </div>
 
-            {/* Bottom Bar */}
             <div className="border-t border-gray-700 mt-10 pt-4 text-center text-sm text-gray-500">
                 © {new Date().getFullYear()} ABS Tech. All rights reserved.
             </div>
